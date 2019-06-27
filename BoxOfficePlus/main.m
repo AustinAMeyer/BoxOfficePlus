@@ -43,12 +43,14 @@ int main(int argc, const char * argv[]) {
     int youthAge = 13;
     int seniorAge = 65;
     
-    if ((customerAge < youthAge) || (customerAge >= seniorAge)) {
+   /* if ((customerAge < youthAge) || (customerAge >= seniorAge)) {
         ageDiscount = TRUE;
     }
     else{
         ageDiscount = FALSE;
     }
+    */
+    ageDiscount = ((customerAge < youthAge) || (customerAge >= seniorAge)) ? TRUE:FALSE;
     
     if (ageDiscount && isMatinee && !isEmployee) {
         customerPrice = ageAndMatineePrice;
