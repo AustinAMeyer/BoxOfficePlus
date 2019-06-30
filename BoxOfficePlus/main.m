@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
+ NSString *empMessage;
+
+void printTicket(){
+    empMessage = @"Printed Message";
+    NSLog(@"%@", empMessage);
+}
+
 int main(int argc, const char * argv[]) {
 
     
@@ -20,8 +28,8 @@ int main(int argc, const char * argv[]) {
     //is the customer also a theater employee
     
     bool ageDiscount;
-    bool isMatinee = FALSE;
-    bool isEmployee = FALSE;
+    bool isMatinee = TRUE;
+    bool isEmployee = TRUE;
     
     
     //full price tickets cost $10
@@ -38,11 +46,12 @@ int main(int argc, const char * argv[]) {
     
     
     
-    int customerAge = 20;
+    int customerAge;
     float customerPrice;
     int youthAge = 13;
     int seniorAge = 65;
     
+   
    /* if ((customerAge < youthAge) || (customerAge >= seniorAge)) {
         ageDiscount = TRUE;
     }
@@ -60,15 +69,22 @@ int main(int argc, const char * argv[]) {
     }
      else if (isEmployee && !isMatinee){
         customerPrice = employeeRegularPrice;
+         empMessage = @"Thanks for being part of the team! Enjoy your movie!";
+         NSLog(@"%@", empMessage);
     }
     
     else if (isEmployee && isMatinee)
     {
         customerPrice = employeeMatineePrice;
+        empMessage = @"Thanks for being part of the team! Enjoy your FREE movie!";
+        NSLog(@"%@", empMessage);
     }
     
     else{
     customerPrice = isRegularPrice;
     }
+    
+    printTicket();
+    
     return 0;
 }
