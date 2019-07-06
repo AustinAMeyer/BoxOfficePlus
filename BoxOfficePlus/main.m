@@ -28,8 +28,8 @@ int main(int argc, const char * argv[]) {
     //is the customer also a theater employee
     
     bool ageDiscount;
-    bool isMatinee = TRUE;
-    bool isEmployee = TRUE;
+    bool isMatinee = YES;
+    bool isEmployee;
     
     
     //full price tickets cost $10
@@ -39,9 +39,9 @@ int main(int argc, const char * argv[]) {
      //for an employee attending a matinee = $0.00 (free)
     
     float isRegularPrice = 10;
-    float ageOrMatineePrice = 8.00;
+    float ageOrMatineePrice = 8.50;
     float ageAndMatineePrice = 6.50;
-    float employeeRegularPrice = 4.50;
+    float employeeRegularPrice = 4.0;
     float employeeMatineePrice = 0;
     
     
@@ -50,15 +50,23 @@ int main(int argc, const char * argv[]) {
     float customerPrice;
     int youthAge = 13;
     int seniorAge = 65;
+    float subtotal = 0;
+    float taxRate = 0.05;
+    float grandTotal = 0;
     
-   
-   /* if ((customerAge < youthAge) || (customerAge >= seniorAge)) {
+    NSArray *agesArray = @[@5, @5, @14, @42, @77];
+    
+for (NSNumber *age in agesArray) {
+        
+    customerAge = [age intValue];
+    
+    if ((customerAge < youthAge) || (customerAge >= seniorAge)) {
         ageDiscount = TRUE;
     }
     else{
         ageDiscount = FALSE;
     }
-    */
+    
     ageDiscount = ((customerAge < youthAge) || (customerAge >= seniorAge)) ? TRUE:FALSE;
     
     if (ageDiscount && isMatinee && !isEmployee) {
@@ -84,7 +92,17 @@ int main(int argc, const char * argv[]) {
     customerPrice = isRegularPrice;
     }
     
+    subtotal = subtotal + customerPrice;
+    NSLog(@"age: %i customer price: %f current subtotal: %f /n", customerAge, customerPrice, subtotal);
+}
+    
+    grandTotal = subtotal + (subtotal * taxRate);
+    
+    
     printTicket();
+    
+    
+    
     
     return 0;
 }
